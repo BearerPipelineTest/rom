@@ -79,16 +79,6 @@ module ROM
       end
 
       # @api public
-      def trigger(event, payload)
-        registry.trigger("configuration.#{event}", payload)
-      end
-
-      # @api public
-      def notifications
-        registry.notifications
-      end
-
-      # @api public
       def inflector
         config.inflector
       end
