@@ -2,8 +2,9 @@
 
 require "dry/core/class_attributes"
 
-require "rom/transaction"
-require "rom/support/notifications"
+require_relative "support/notifications"
+require_relative "transaction"
+require_relative "components/provider"
 
 module ROM
   # Abstract gateway class
@@ -17,6 +18,8 @@ module ROM
   class Gateway
     extend Dry::Core::ClassAttributes
     extend Notifications::Listener
+
+    extend ROM::Provider(:plugin, type: :gateway)
 
     # @!method self.adapter
     #  Get or set gateway's adapter identifier

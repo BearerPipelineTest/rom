@@ -27,6 +27,7 @@ module ROM
     setting :logger
     setting :args, default: EMPTY_ARRAY, constructor: :dup.to_proc
     setting :opts, default: EMPTY_HASH, constructor: :dup.to_proc
+    setting :plugins, default: EMPTY_ARRAY, inherit: true
   end
 
   # Dataset defaults
