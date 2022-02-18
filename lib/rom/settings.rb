@@ -39,6 +39,7 @@ module ROM
     setting :namespace, default: "datasets"
     setting :adapter
     setting :gateway
+    setting :plugins, default: EMPTY_ARRAY, inherit: true
   end
 
   # Schema defaults
@@ -83,6 +84,7 @@ module ROM
     setting :id
     setting :namespace, default: "views", join: true
     setting :args, default: [].freeze
+    setting :plugins, default: EMPTY_ARRAY, inherit: true
   end
 
   # Association defaults
@@ -104,6 +106,7 @@ module ROM
     setting :view
     setting :override
     setting :combine_keys, default: {}
+    setting :plugins, default: EMPTY_ARRAY, inherit: true
   end
 
   # Command defaults

@@ -221,7 +221,7 @@ module ROM
 
           plugin
         when 1
-          plugin(adapter, *args)
+          plugin(self.adapter, *args)
         else
           raise ArgumentError, "+plugin+ accepts either 1 or 2 arguments (#{args.size} given)"
         end
@@ -238,24 +238,15 @@ module ROM
       def __dsl__(klass, type: klass.type, **options, &block)
         type_config = config[type].join(options, :right).inherit!(config.component)
 
-        plugins =
-          if type_config.key?(:plugins)
-            type_config.plugins
-          else
-            EMPTY_ARRAY
-          end
-
-        type_plugins = plugins.select { |plugin| plugin.type == type }
-
         if klass.nested && block
           dsl = klass.new(provider: self, config: type_config)
-          type_plugins.each { |plugin| plugin.enable(dsl) }
+          dsl.enable_plugins
           dsl.configure
           dsl.instance_eval(&block)
           dsl
         else
           dsl = klass.new(provider: self, config: type_config, block: block)
-          type_plugins.each { |plugin| plugin.enable(dsl) }
+          dsl.enable_plugins
           dsl.()
         end
       end
