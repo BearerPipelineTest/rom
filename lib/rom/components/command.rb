@@ -12,7 +12,7 @@ module ROM
 
       # @api public
       def build
-        constant.build(registry.relations[config.relation])
+        gateway.command(constant, relation: registry.relations[config.relation])
       end
 
       # @api private

@@ -213,6 +213,15 @@ module ROM
       transaction_runner(**opts).run(**opts, &block)
     end
 
+    # Build a command instance
+    #
+    # @return [Command]
+    #
+    # @api public
+    def command(klass, relation:, **opts)
+      klass.new(relation, opts)
+    end
+
     private
 
     # @api private
