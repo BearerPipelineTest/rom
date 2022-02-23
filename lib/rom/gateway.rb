@@ -219,7 +219,7 @@ module ROM
     #
     # @api public
     def command(klass, relation:, **opts)
-      klass.new(relation, opts)
+      klass.build(relation, **opts)
     end
 
     private
