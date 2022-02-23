@@ -101,7 +101,7 @@ module ROM
           plugin.name
         end
 
-        apply_external_plugins(gateway_plugins, already_applied)
+        apply_external_plugins(gateway_plugins, already_applied) if gateway?
         apply_external_plugins(provider_plugins, already_applied)
       end
 
