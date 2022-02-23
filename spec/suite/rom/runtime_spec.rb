@@ -221,6 +221,8 @@ RSpec.describe ROM::Setup do
   end
 
   it "can define relation associations" do
+    setup.gateway(:default)
+
     setup.relation(:users) do
       associations do
         has_many :tasks
@@ -241,6 +243,8 @@ RSpec.describe ROM::Setup do
   end
 
   it "can define a local plugin" do
+    setup.gateway(:default)
+
     plugin = setup.plugin(:memory, schemas: :timestamps) { |config|
       config.attributes = %w[foo bar]
     }
